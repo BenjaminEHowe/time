@@ -62,7 +62,10 @@
         document.getElementById("userTz").innerHTML = userTz + " " + userMoment.format("Z z");
       }
 
-      setTime("2020-01-16 08:00", "America/Phoenix");
+      let path = location.pathname.split('/');
+      let originalTime = decodeURIComponent(path[1]);
+      let originalTz = decodeURIComponent(path[2]);
+      setTime(originalTime, originalTz);
     </script>
   </body>
 </html>
