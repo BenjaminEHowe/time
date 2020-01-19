@@ -40,13 +40,29 @@
   </head>
   <body>
     <main>
-      <h4>Original time (+0000)</h4>
-      <h2>12:34</h2>
-      <h3>In your timezone (+0900):</h3>
-      <h1>21:34</h1>
+      <h4>Original time (<span id="originalTz"></span>)</h4>
+      <h2><span id="originalTime"></span></h2>
+      <h3>In your timezone (<span id="userTz"></span>):</h3>
+      <h1><span id="userTime"></span></h1>
     </main>
     <footer>
       <p>Created by <a href="https://www.bh96.uk/">Benjamin Howe</a></p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.27/moment-timezone-with-data-10-year-range.min.js" integrity="sha256-9x/X+/cyuorK/e3qq0k4nugZUecitOwz67xXtZ7sWME=" crossorigin="anonymous"></script>
+    <script>
+      function setTime(originalTime, originalTz) {
+        userTz = moment.tz.guess();
+        originalMoment = moment.tz(originalTime, originalTz);
+        userMoment = originalMoment.clone().tz(userTz);
+
+        document.getElementById("originalTime").innerHTML = originalMoment.format('HH:mm');
+        document.getElementById("originalTz").innerHTML = originalTz + " " + originalMoment.format("Z z");
+        document.getElementById("userTime").innerHTML = userMoment.format('HH:mm');
+        document.getElementById("userTz").innerHTML = userTz + " " + userMoment.format("Z z");
+      }
+
+      setTime("2020-01-16 08:00", "America/Phoenix");
+    </script>
   </body>
 </html>
