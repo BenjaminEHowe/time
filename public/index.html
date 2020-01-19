@@ -2,8 +2,51 @@
 <html lang="en">
   <head>
     <title>Page Title</title>
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      main {
+        display: block;
+        margin: 5em auto;
+        width: 50%;
+        min-width: 480px;
+        text-align: center
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #f5f5f5;
+        color: #6c757d;
+        text-align: center;
+      }
+
+      footer a {
+        color: #343a40;
+      }
+    </style>
   </head>
   <body>
-    <p>Page Content</p>
+    <main>
+      <h4>Original time (+0000)</h4>
+      <h2>12:34</h2>
+      <h3>In your timezone (+0900):</h3>
+      <h1>21:34</h1>
+    </main>
+    <footer>
+      <p>Created by <a href="https://www.bh96.uk/">Benjamin Howe</a></p>
+    </footer>
   </body>
 </html>
